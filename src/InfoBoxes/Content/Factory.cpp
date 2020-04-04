@@ -142,8 +142,8 @@ struct MetaData {
 //   MacCready: e_MacCready,e_WP_Speed_MC,e_Climb_Perc,e_Act_Speed,NextLegEqThermal,CruiseEfficiency
 //   Nav: e_Bearing,NEXT_RADIAL,e_WP_Distance,e_WP_AltDiff,e_WP_MC0AltDiff,e_WP_H,e_WP_AltReq,e_Fin_AltDiff,e_Fin_AltReq,
 //        e_Fin_Distance,e_Home_Distance,
-//   Comp&Task: e_SpeedTaskAvg,e_CC_SpeedInst,e_CC_Speed,e_AA_Time,e_AA_TimeDiff,e_AA_DistanceMax,e_AA_DistanceMin,e_AA_SpeedMax,
-//              e_AA_SpeedMin,e_Fin_AA_Distance,e_AA_SpeedAvg,e_OC_Distance,e_TaskProgress,
+//   Comp&Task: e_SpeedTaskAvg,e_SpeedTaskLeg,e_CC_SpeedInst,e_CC_Speed,e_AA_Time,e_AA_TimeDiff,e_AA_DistanceMax,e_AA_DistanceMin,
+//              e_AA_SpeedMax,e_AA_SpeedMin,e_Fin_AA_Distance,e_AA_SpeedAvg,e_OC_Distance,e_TaskProgress,
 //              START_OPEN_TIME,START_OPEN_ARRIVAL_TIME
 //   Waypoint: e_WP_Name,e_TimeSinceTakeoff,e_TimeLocal,e_TimeUTC,e_Fin_Time,e_Fin_ETE_VMG,e_WP_Time,e_WP_ETE_VMG,e_Fin_TimeLocal,
 //             e_WP_TimeLocal,e_RH_Trend,e_TaskMaxHeightTime
@@ -1290,6 +1290,17 @@ static constexpr MetaData meta_data[] = {
     NEXT_ARROW,
     NEXT_ARROW,
   },
+  
+  // e_SpeedTaskLeg
+  {
+    N_("Speed task leg"),
+    N_("V Task Leg"),
+    N_("Average cross country speed while on current task leg, not compensated for altitude."),
+    UpdateInfoBoxTaskSpeedLeg,
+    e_SpeedTaskLeg,
+    e_SpeedTaskLeg,
+  },
+  
 };
 
 static_assert(ARRAY_SIZE(meta_data) == NUM_TYPES,
