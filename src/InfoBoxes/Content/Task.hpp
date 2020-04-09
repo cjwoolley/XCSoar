@@ -97,6 +97,9 @@ void
 UpdateInfoBoxTaskSpeed(InfoBoxData &data);
 
 void
+UpdateInfoBoxTaskSpeedLeg(InfoBoxData &data);
+
+void
 UpdateInfoBoxTaskSpeedAchieved(InfoBoxData &data);
 
 void
