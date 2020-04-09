@@ -1290,6 +1290,17 @@ static constexpr MetaData meta_data[] = {
     NEXT_ARROW,
     NEXT_ARROW,
   },
+  
+  // e_SpeedTaskLeg
+  {
+    N_("Speed task leg"),
+    N_("V Task Leg"),
+    N_("Average cross country speed while on current task leg, not compensated for altitude."),
+    UpdateInfoBoxTaskSpeedLeg,
+    e_SpeedTaskLeg,
+    e_SpeedTaskLeg,
+  },
+  
 };
 
 static_assert(ARRAY_SIZE(meta_data) == NUM_TYPES,

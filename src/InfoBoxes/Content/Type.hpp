@@ -156,6 +156,8 @@ namespace InfoBoxFactory
 
     /* 110..119 */
     NEXT_ARROW,
+    
+    e_SpeedTaskLeg, /* Average cross country speed while on current task leg, not compensated for altitude */
 
     e_NUM_TYPES /* Last item */
   };
