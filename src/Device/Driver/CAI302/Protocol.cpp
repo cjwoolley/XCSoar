@@ -339,7 +339,7 @@ WaitDownloadPrompt(Port &port, OperationEnvironment &env,
 bool
 CAI302::DownloadMode(Port &port, OperationEnvironment &env)
 {
-  return SendCommandQuick(port, "DOWNLOAD 1\r", env) &&
+  return SendCommandQuick(port, "DOWNLOAD 0\r", env) &&
     WaitDownloadPrompt(port, env);
 }
 
