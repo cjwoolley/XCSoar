@@ -347,7 +347,7 @@ CreateObservationZoneEditWidget(ObservationZonePoint &oz, bool is_fai_general)
     return new SectorZoneEditWidget((SectorZone &)oz);
 
   case ObservationZone::Shape::LINE:
-    return new LineSectorZoneEditWidget((LineSectorZone &)oz, !is_fai_general);
+    return new LineSectorZoneEditWidget((LineSectorZone &)oz, is_fai_general);
 
   case ObservationZone::Shape::CYLINDER:
     return new CylinderZoneEditWidget((CylinderZone &)oz, !is_fai_general);
