@@ -37,6 +37,7 @@ static constexpr TaskFactoryConstraints fai_constraints = {
 static constexpr LegalPointSet fai_start_types{
   TaskPointFactoryType::START_SECTOR,
   TaskPointFactoryType::START_LINE,
+  TaskPointFactoryType::START_CYLINDER,
 };
 
 static constexpr LegalPointSet fai_im_types{
@@ -47,6 +48,7 @@ static constexpr LegalPointSet fai_im_types{
 static constexpr LegalPointSet fai_finish_types{
   TaskPointFactoryType::FINISH_SECTOR,
   TaskPointFactoryType::FINISH_LINE,
+  TaskPointFactoryType::FINISH_CYLINDER,
 };
 
 FAITaskFactory::FAITaskFactory(const TaskFactoryConstraints &_constraints,
@@ -115,10 +117,8 @@ FAITaskFactory::GetMutatedPointType(const OrderedTaskPoint &tp) const
 
   case TaskPointFactoryType::FINISH_SECTOR:
   case TaskPointFactoryType::FINISH_LINE:
-    break;
-
   case TaskPointFactoryType::FINISH_CYLINDER:
-    newtype = TaskPointFactoryType::FINISH_SECTOR;
+    newtype = TaskPointFactoryType::FINISH_LINE;
     break;
 
   case TaskPointFactoryType::FAI_SECTOR:
