@@ -69,7 +69,7 @@ TaskPropertiesPanel::RefreshView()
   SetRowVisible(MIN_TIME, aat_types);
   LoadValueTime(MIN_TIME, (int)p.aat_min_time);
 
-  LoadValue(START_REQUIRES_ARM, p.start_constraints.require_arm);
+  LoadValue(START_REQUIRES_ARM, false);
 
   LoadValue(START_OPEN_TIME, p.start_constraints.open_time_span.GetStart());
   LoadValue(START_CLOSE_TIME, p.start_constraints.open_time_span.GetEnd());
@@ -92,7 +92,7 @@ TaskPropertiesPanel::RefreshView()
   SetRowVisible(FINISH_HEIGHT_REF, !fai_start_finish);
   LoadValueEnum(FINISH_HEIGHT_REF, p.finish_constraints.min_height_ref);
 
-  SetRowVisible(FAI_FINISH_HEIGHT, IsFai(ftype));
+  SetRowVisible(FAI_FINISH_HEIGHT, true);
   LoadValue(FAI_FINISH_HEIGHT, fai_start_finish);
 
   LoadValueEnum(TASK_TYPE, ftype);
