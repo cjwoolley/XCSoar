@@ -125,7 +125,7 @@ static void
 RequestLogbookContents(Port &port, unsigned start, unsigned end,
                        OperationEnvironment &env)
 {
-  char buffer[32];
+  char buffer[64];
   sprintf(buffer, "PLXVC,LOGBOOK,R,%u,%u,", start, end);
 
   PortWriteNMEA(port, buffer, env);
@@ -205,24 +205,21 @@ Nano::ReadFlightList(Port &port, RecordedFlightList &flight_list,
 
   env.SetProgressRange(nflights);
 
-  unsigned requested_tail = 1;
+  unsigned requested_tail = 0;
   while (true) {
-    const unsigned room = flight_list.max_size() - flight_list.size();
-    const unsigned remaining = nflights - requested_tail + 1;
-    const unsigned nmax = std::min(room, remaining);
-    if (nmax == 0)
-      break;
 
-    /* read 8 records at a time */
-    const unsigned nrequest = std::min(nmax, 8u);
+    if (nflights == 0)
+      break;
 
     timeout = TimeoutClock(std::chrono::seconds(2));
     if (!GetLogbookContents(port, reader, flight_list,
-                            requested_tail, nrequest, env, timeout))
+                            nflights, 1, env, timeout))
       return false;
 
-    requested_tail += nrequest;
-    env.SetProgressPosition(requested_tail - 1);
+    nflights-- ;
+
+    requested_tail++;
+    env.SetProgressPosition(requested_tail);
   }
 
   return true;
