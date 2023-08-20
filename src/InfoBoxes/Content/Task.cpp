@@ -449,6 +449,19 @@ UpdateInfoBoxTaskSpeed(InfoBoxData &data) noexcept
 }
 
 void
+UpdateInfoBoxTaskSpeedLeg(InfoBoxData &data) noexcept
+{
+  const TaskStats &task_stats = CommonInterface::Calculated().task_stats;
+  if (!task_stats.task_valid || !task_stats.current_leg.travelled.IsDefined()) {
+    data.SetInvalid();
+    return;
+  }
+
+  // Set Value and unit
+  data.SetValueFromTaskSpeed(task_stats.current_leg.travelled.GetSpeed());
+}
+
+void
 UpdateInfoBoxTaskSpeedAchieved(InfoBoxData &data) noexcept
 {
   const TaskStats &task_stats = CommonInterface::Calculated().task_stats;
@@ -924,3 +937,4 @@ InfoBoxContentNextArrow::OnCustomPaint(Canvas &canvas,
   NextArrowRenderer renderer(UIGlobals::GetLook().wind_arrow_info_box);
   renderer.DrawArrow(canvas, rc, bd);
 }
+
