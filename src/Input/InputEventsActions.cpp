@@ -569,6 +569,7 @@ InputEvents::eventBeep([[maybe_unused]] const char *misc)
 void
 InputEvents::eventSetup(const char *misc)
 {
+  FileDataField df;
   if (StringIsEqual(misc, "Basic"))
     dlgBasicSettingsShowModal();
   else if (StringIsEqual(misc, "Wind"))
@@ -582,6 +583,7 @@ InputEvents::eventSetup(const char *misc)
   else if (StringIsEqual(misc, "Weather"))
     ShowWeatherDialog("rasp");
   else if (StringIsEqual(misc, "Replay")) {
+    df.SetFileType(FileType::REPLAY);
     if (!CommonInterface::MovementDetected() && backend_components->replay)
       ShowReplayDialog(*backend_components->replay);
   } else if (StringIsEqual(misc, "Switches"))

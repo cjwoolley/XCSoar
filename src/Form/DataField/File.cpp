@@ -300,13 +300,22 @@ FileDataField::Sort() noexcept
     postponed_sort = true;
     return;
   }
-
-  // Sort the filelist (except for the first (empty) element)
-  std::sort(files.begin(), files.end(), [](const Item &a,
-                                           const Item &b) {
-              // Compare by filename
-              return StringCollate(a.filename.c_str(), b.filename.c_str()) < 0;
-            });
+    if (GetFileType() == FileType::IGC) {
+      // IGC-File-Picker sorted descending
+      std::sort(files.begin(), files.end(), [](const Item &a, const Item &b) {
+        return StringCollate(a.filename.c_str(), b.filename.c_str()) > 0;
+      });
+    }else if (GetFileType() == FileType::REPLAY) {
+      // Replay if first record blank then remainder sorted descending
+      std::sort(std::next(files.begin()), files.end(), [](const Item &a, const Item &b) {
+        return StringCollate(a.filename.c_str(), b.filename.c_str()) > 0;
+      });
+    } else {
+      // All other lists sorted ascending
+      std::sort(files.begin(), files.end(), [](const Item &a, const Item &b) {
+        return StringCollate(a.filename.c_str(), b.filename.c_str()) < 0;
+      });
+    }
 }
 
 ComboList
