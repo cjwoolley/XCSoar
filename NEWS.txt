@@ -49,6 +49,8 @@ Version 7.46 - not yet released
   - fix no-position targets missing from the radar and map #2847
   - send each FLARM binary frame in one write so escaped bytes are not
     split across USB packets
+  - stop a FLARM IGC download immediately on NACK instead of retrying
+    until the payload looks like a short ACK
 * glide computer
   - fix best-glide speed and speed-to-fly at altitude when MacCready
     is set, so density scaling no longer inflates MacCready #2881
