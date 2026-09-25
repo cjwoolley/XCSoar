@@ -106,7 +106,14 @@ FlarmDevice::DeclareInternal(const Declaration &declaration,
     buffer.Format("%02d%05.0f%c,%03d%05.0f%c,",
                   DegLat, (double)MinLat, NoS,
                   DegLon, (double)MinLon, EoW);
-    CopyCleanFlarmString(buffer.buffer() + buffer.length(), declaration.GetShortName(i), 6);
+
+    if (IsPowerFlarm()) {
+        // Appends full name strings (up to 30 characters) for PowerFLARM units
+        CopyCleanFlarmString(buffer.buffer() + buffer.length(), declaration.GetName(i), 30);
+    } else {
+        // Appends legacy short codes (limited to 6 characters) for Classic FLARM units
+        CopyCleanFlarmString(buffer.buffer() + buffer.length(), declaration.GetShortName(i), 6);
+    }
 
     if (!SetConfig("ADDWP", buffer, env))
       return false;
