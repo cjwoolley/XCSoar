@@ -102,6 +102,7 @@ TEST_NAMES = \
 	TestWaypointReader TestThermalBase \
 	TestSpeedVector \
 	TestFlarmNet TestFlarmMessaging TestFlarmBinaryProtocol \
+	TestSkyLinesFix \
 	TestColorRamp TestXCThermBandQuery TestGeoPoint TestDiffFilter \
 	TestFileUtil TestRepository TestFileType TestMarkdownCheckbox TestPath TestPolars TestCSVLine TestGlidePolar \
 	TestLXNAVPolarConversion \
@@ -454,6 +455,15 @@ TEST_AIRSPACE_WARNING_MANAGER_SOURCES = \
 	$(TEST_SRC_DIR)/TestAirspaceWarningManager.cpp
 TEST_AIRSPACE_WARNING_MANAGER_DEPENDS = $(TEST1_DEPENDS) UNITS
 $(eval $(call link-program,TestAirspaceWarningManager,TEST_AIRSPACE_WARNING_MANAGER))
+
+TEST_SKYLINES_FIX_SOURCES = \
+	$(SRC)/Tracking/SkyLines/Assemble.cpp \
+	$(SRC)/NMEA/MoreData.cpp \
+	$(SRC)/Atmosphere/AirDensity.cpp \
+	$(TEST_SRC_DIR)/tap.c \
+	$(TEST_SRC_DIR)/TestSkyLinesFix.cpp
+TEST_SKYLINES_FIX_DEPENDS = LIBNMEA GEO MATH UTIL TIME
+$(eval $(call link-program,TestSkyLinesFix,TEST_SKYLINES_FIX))
 
 TEST_OGN_APRS_PARSER_SOURCES = \
 	$(SRC)/Cloud/OGNAprs.cpp \
