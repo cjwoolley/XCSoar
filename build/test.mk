@@ -3085,6 +3085,7 @@ RUN_PROGRESS_WINDOW_SOURCES = \
 	$(SRC)/Formatter/ByteSizeFormatter.cpp \
 	$(SRC)/ProgressWindow.cpp \
 	$(SRC)/Gauge/LogoView.cpp \
+	$(SRC)/Renderer/WarningRibbonRenderer.cpp \
 	$(TEST_SRC_DIR)/FakeAsset.cpp \
 	$(TEST_SRC_DIR)/Fonts.cpp \
 	$(TEST_SRC_DIR)/RunProgressWindow.cpp
@@ -3101,6 +3102,7 @@ RUN_JOB_DIALOG_SOURCES = \
 	$(SRC)/Look/ButtonLook.cpp \
 	$(SRC)/Look/CheckBoxLook.cpp \
 	$(SRC)/Gauge/LogoView.cpp \
+	$(SRC)/Renderer/WarningRibbonRenderer.cpp \
 	$(SRC)/Dialogs/ProgressDialog.cpp \
 	$(SRC)/Dialogs/JobDialog.cpp \
 	$(SRC)/Dialogs/DialogSettings.cpp \
