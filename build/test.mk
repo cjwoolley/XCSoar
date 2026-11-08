@@ -3030,6 +3030,7 @@ RUN_HORIZON_RENDERER_SOURCES = \
 	$(SRC)/Look/AutoFont.cpp \
 	$(SRC)/Look/ButtonLook.cpp \
 	$(SRC)/Renderer/HorizonRenderer.cpp \
+	$(SRC)/Formatter/AngleFormatter.cpp \
 	$(SRC)/Renderer/WarningRibbonRenderer.cpp \
 	$(SRC)/Renderer/RadarRenderer.cpp \
 	$(TEST_SRC_DIR)/Fonts.cpp \
